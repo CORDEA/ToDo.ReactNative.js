@@ -7,11 +7,19 @@ export default class Main extends React.Component {
             <View style={styles.container}>
                 <FlatList
                     data={[
-                        {key: 'a'},
-                        {key: 'b'},
-                        {key: 'c'},
+                        {key: 'a', value: 'a'},
+                        {key: 'b', value: 'a'},
+                        {key: 'c', value: 'a'},
                     ]}
-                    renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+                    renderItem={({item}) =>
+                        <View style={styles.item}>
+                            <Text style={styles.title}>{item.key}</Text>
+                            <Text style={styles.description}>{item.key}</Text>
+                        </View>
+                    }
+                    ItemSeparatorComponent={() =>
+                        <View style={styles.separator}/>
+                    }
                 />
             </View>
         )
@@ -24,5 +32,20 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
     },
-    item: {},
+    item: {
+        flex: 1,
+        padding: 16,
+    },
+    title: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginBottom: 16,
+    },
+    description: {
+        fontSize: 12,
+    },
+    separator: {
+        height: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.12)',
+    },
 });
