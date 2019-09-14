@@ -1,8 +1,11 @@
 import {StyleSheet, TextInput, View} from "react-native";
 import React from "react";
 import AddFloatingActionButton from "./AddFloatingActionButton";
+import {addTodo} from "./TodoActions";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
 
-export default class AddScreen extends React.Component {
+class AddScreen extends React.Component {
     static navigationOptions = {
         title: 'Add ToDo',
     };
@@ -23,7 +26,8 @@ export default class AddScreen extends React.Component {
                     value={this.state.text}
                 />
                 <AddFloatingActionButton
-                    onPressItem={(item) => {
+                    onPressItem={() => {
+                        this.props.addTodo(this.state.text)
                     }}
                 />
             </View>
@@ -38,3 +42,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
 });
+
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({addTodo}, dispatch)
+);
+
+export default connect(null, mapDispatchToProps)(AddScreen);
