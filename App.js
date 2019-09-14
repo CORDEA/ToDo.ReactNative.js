@@ -1,17 +1,18 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import {createStore} from "redux";
 import todoReducer from './TodoReducer';
 import {Provider} from "react-redux";
+import Main from "./Main";
 
 const store = createStore(todoReducer);
 
 export default function App() {
     return (
         <Provider store={store}>
-            <View style={styles.container}>
-                <Text>Open up App.js to start working on your app!</Text>
-            </View>
+            <SafeAreaView style={styles.container}>
+                <Main/>
+            </SafeAreaView>
         </Provider>
     );
 }
@@ -20,7 +21,5 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
     },
 });
