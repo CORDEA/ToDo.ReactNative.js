@@ -1,7 +1,7 @@
 import {FlatList, StyleSheet, Text, View} from "react-native";
 import React from "react";
 import {connect} from "react-redux";
-import {FloatingAction} from "react-native-floating-action";
+import AddFloatingActionButton from "./AddFloatingActionButton";
 
 class MainScreen extends React.Component {
     static navigationOptions = {
@@ -24,16 +24,7 @@ class MainScreen extends React.Component {
                         <View style={styles.separator}/>
                     }
                 />
-                <FloatingAction
-                    overrideWithAction
-                    actions={[
-                        {
-                            name: "add",
-                            icon: require("./img/baseline_add_white_24pt.png"),
-                        },
-                    ]}
-                    iconHeight={24}
-                    iconWidth={24}
+                <AddFloatingActionButton
                     onPressItem={() => {
                         navigate('AddScreen')
                     }}

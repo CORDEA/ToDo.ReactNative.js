@@ -1,6 +1,6 @@
 import {StyleSheet, TextInput, View} from "react-native";
 import React from "react";
-import {FloatingAction} from "react-native-floating-action";
+import AddFloatingActionButton from "./AddFloatingActionButton";
 
 export default class AddScreen extends React.Component {
     static navigationOptions = {
@@ -13,19 +13,7 @@ export default class AddScreen extends React.Component {
                 <TextInput
                     placeholder={"ToDo"}
                 />
-                <FloatingAction
-                    overrideWithAction
-                    actions={[
-                        {
-                            name: "add",
-                            icon: require("./img/baseline_add_white_24pt.png"),
-                        },
-                    ]}
-                    iconHeight={24}
-                    iconWidth={24}
-                    onPressItem={() => {
-                    }}
-                />
+                <AddFloatingActionButton/>
             </View>
         )
     }
