@@ -1,7 +1,8 @@
 import {FlatList, StyleSheet, Text, View} from "react-native";
 import React from "react";
+import {connect} from "react-redux";
 
-export default class Main extends React.Component {
+class Main extends React.Component {
     static navigationOptions = {
         title: 'ToDo',
     };
@@ -10,11 +11,7 @@ export default class Main extends React.Component {
         return (
             <View style={styles.container}>
                 <FlatList
-                    data={[
-                        {key: 'a', value: 'a'},
-                        {key: 'b', value: 'a'},
-                        {key: 'c', value: 'a'},
-                    ]}
+                    data={this.props.list}
                     renderItem={({item}) =>
                         <View style={styles.item}>
                             <Text style={styles.title}>{item.key}</Text>
@@ -29,7 +26,6 @@ export default class Main extends React.Component {
         )
     }
 }
-
 
 const styles = StyleSheet.create({
     container: {
@@ -53,3 +49,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.12)',
     },
 });
+
+const mapStateToProps = (state) => {
+    const {todo: {list}} = state;
+    return {list}
+};
+
+export default connect(mapStateToProps)(Main);

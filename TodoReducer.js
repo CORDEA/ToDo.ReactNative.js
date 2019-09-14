@@ -1,6 +1,10 @@
 import {combineReducers} from "redux";
 
-const todoReducer = (state = {}, action) => {
+const InitialState = {
+    list: [],
+};
+
+const todoReducer = (state = InitialState, action) => {
     return state
 };
 
