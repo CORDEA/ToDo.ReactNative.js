@@ -7,13 +7,25 @@ export default class AddScreen extends React.Component {
         title: 'Add ToDo',
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {text: ''}
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <TextInput
                     placeholder={"ToDo"}
+                    onChangeText={(text) =>
+                        this.setState({text})
+                    }
+                    value={this.state.text}
                 />
-                <AddFloatingActionButton/>
+                <AddFloatingActionButton
+                    onPressItem={(item) => {
+                    }}
+                />
             </View>
         )
     }
