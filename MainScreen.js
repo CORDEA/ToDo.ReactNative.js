@@ -9,6 +9,7 @@ class MainScreen extends React.Component {
     };
 
     render() {
+        const {navigate} = this.props.navigation;
         return (
             <View style={styles.container}>
                 <FlatList
@@ -33,9 +34,10 @@ class MainScreen extends React.Component {
                     ]}
                     iconHeight={24}
                     iconWidth={24}
-                    onPressItem={(name) => {
-                    }
-                    }/>
+                    onPressItem={() => {
+                        navigate('AddScreen')
+                    }}
+                />
             </View>
         )
     }
