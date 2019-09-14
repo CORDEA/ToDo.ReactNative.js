@@ -3,14 +3,14 @@ import {StyleSheet} from 'react-native';
 import {createStore} from "redux";
 import todoReducer from './TodoReducer';
 import {Provider} from "react-redux";
-import Main from "./Main";
+import MainScreen from "./MainScreen";
 import {createAppContainer} from "react-navigation";
 import {createStackNavigator} from "react-navigation-stack";
 
 const store = createStore(todoReducer);
 
 const mainNavigator = createStackNavigator({
-    Main: {screen: Main},
+    MainScreen: {screen: MainScreen},
 });
 
 const Navigation = createAppContainer(mainNavigator);

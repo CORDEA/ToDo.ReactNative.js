@@ -2,7 +2,7 @@ import {FlatList, StyleSheet, Text, View} from "react-native";
 import React from "react";
 import {connect} from "react-redux";
 
-class Main extends React.Component {
+class MainScreen extends React.Component {
     static navigationOptions = {
         title: 'ToDo',
     };
@@ -55,4 +55,4 @@ const mapStateToProps = (state) => {
     return {list}
 };
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps)(MainScreen);
