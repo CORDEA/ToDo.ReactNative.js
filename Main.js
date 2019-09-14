@@ -2,6 +2,10 @@ import {FlatList, StyleSheet, Text, View} from "react-native";
 import React from "react";
 
 export default class Main extends React.Component {
+    static navigationOptions = {
+        title: 'ToDo',
+    };
+
     render() {
         return (
             <View style={styles.container}>

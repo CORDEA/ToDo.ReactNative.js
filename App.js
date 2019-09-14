@@ -1,18 +1,24 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {createStore} from "redux";
 import todoReducer from './TodoReducer';
 import {Provider} from "react-redux";
 import Main from "./Main";
+import {createAppContainer} from "react-navigation";
+import {createStackNavigator} from "react-navigation-stack";
 
 const store = createStore(todoReducer);
+
+const mainNavigator = createStackNavigator({
+    Main: {screen: Main},
+});
+
+const Navigation = createAppContainer(mainNavigator);
 
 export default function App() {
     return (
         <Provider store={store}>
-            <SafeAreaView style={styles.container}>
-                <Main/>
-            </SafeAreaView>
+            <Navigation/>
         </Provider>
     );
 }
