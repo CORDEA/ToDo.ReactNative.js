@@ -42,6 +42,14 @@ const styles = StyleSheet.create({
         padding: 16,
         backgroundColor: '#fff',
     },
+    input: {
+        marginBottom: 16,
+        fontSize: 16,
+        padding: 16,
+        borderColor: 'rgba(0, 0, 0, 0.12)',
+        borderWidth: 1,
+        borderRadius: 4,
+    },
 });
 
 const mapStateToProps = (state) => ({});
