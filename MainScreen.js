@@ -21,7 +21,12 @@ class MainScreen extends React.Component {
                                 <View style={styles.leftContent}>
                                     <Text style={styles.leftText}>Mark as completed</Text>
                                 </View>
-                            }>
+                            }
+                            rightButtons={[
+                                <View style={styles.rightContent}>
+                                    <Text style={styles.rightText}>Delete</Text>
+                                </View>
+                            ]}>
                             <View style={styles.item}>
                                 <Text style={styles.title}>{item.title}</Text>
                                 <Text style={styles.description}>{item.description}</Text>
@@ -70,6 +75,17 @@ const styles = StyleSheet.create({
     },
     leftText: {
         alignSelf: 'flex-end',
+        margin: 16,
+        fontSize: 16,
+        color: '#fff',
+    },
+    rightContent: {
+        flex: 1,
+        justifyContent: 'center',
+        alignContent: 'center',
+        backgroundColor: '#d81b60',
+    },
+    rightText: {
         margin: 16,
         fontSize: 16,
         color: '#fff',
