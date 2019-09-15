@@ -1,5 +1,3 @@
-import {combineReducers} from "redux";
-
 const InitialState = {
     addTodoError: null,
     list: [],
@@ -16,4 +14,4 @@ const todoReducer = (state = InitialState, action) => {
     }
 };
 
-export default combineReducers({todo: todoReducer})
+export default todoReducer;
