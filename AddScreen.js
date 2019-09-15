@@ -12,23 +12,33 @@ class AddScreen extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {text: ''}
+        this.state = {title: '', description: ''}
     }
 
     render() {
         return (
             <View style={styles.container}>
                 <TextInput
-                    placeholder={"ToDo"}
+                    style={styles.input}
+                    placeholder={"ToDo Title"}
                     onChangeText={(text) =>
-                        this.setState({text})
+                        this.setState({title: text})
                     }
-                    value={this.state.text}
+                    value={this.state.title}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder={"Description"}
+                    onChangeText={(text) =>
+                        this.setState({description: text})
+                    }
+                    multiline={true}
+                    value={this.state.description}
                 />
                 <AddFloatingActionButton
                     onPressItem={() => {
-                        this.props.addTodo(this.state.text);
-                        this.setState({text: ''})
+                        this.props.addTodo(this.state);
+                        this.setState({title: '', description: ''})
                     }}
                 />
             </View>
@@ -39,6 +49,7 @@ class AddScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: 'column',
         padding: 16,
         backgroundColor: '#fff',
     },

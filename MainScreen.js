@@ -17,7 +17,7 @@ class MainScreen extends React.Component {
                     renderItem={({item}) =>
                         <View style={styles.item}>
                             <Text style={styles.title}>{item.key}</Text>
-                            <Text style={styles.description}>{item.key}</Text>
+                            <Text style={styles.description}>{item.value}</Text>
                         </View>
                     }
                     ItemSeparatorComponent={() =>
