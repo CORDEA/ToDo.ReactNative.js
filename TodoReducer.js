@@ -9,8 +9,7 @@ const todoReducer = (state = InitialState, action) => {
     switch (action.type) {
         case 'ADD_TODO':
             const {list} = state;
-            list.push(action.payload);
-            return {addTodoError: null, list};
+            return {addTodoError: null, list: list.concat(action.payload)};
         default:
             return state;
     }
