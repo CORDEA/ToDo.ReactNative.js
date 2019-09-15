@@ -20,8 +20,10 @@ class MainScreen extends React.Component {
                     renderItem={({item}) =>
                         <Swipeable
                             leftContent={
-                                <View style={styles.leftContent}>
-                                    <Text style={styles.leftText}>Mark as completed</Text>
+                                <View style={item.completed ? styles.incomplete : styles.complete}>
+                                    {item.completed ?
+                                        <Text style={styles.leftText}>Mark as incomplete</Text> :
+                                        <Text style={styles.leftText}>Mark as completed</Text>}
                                 </View>
                             }
                             onLeftActionActivate={() => {
@@ -73,10 +75,15 @@ const styles = StyleSheet.create({
         height: 1,
         backgroundColor: 'rgba(0, 0, 0, 0.12)',
     },
-    leftContent: {
+    complete: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: '#aed581',
+        backgroundColor: '#2e7d32',
+    },
+    incomplete: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: '#757575',
     },
     leftText: {
         alignSelf: 'flex-end',
