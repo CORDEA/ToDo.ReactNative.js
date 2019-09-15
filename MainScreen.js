@@ -2,6 +2,7 @@ import {FlatList, StyleSheet, Text, View} from "react-native";
 import React from "react";
 import {connect} from "react-redux";
 import AddFloatingActionButton from "./AddFloatingActionButton";
+import Swipeable from "react-native-swipeable";
 
 class MainScreen extends React.Component {
     static navigationOptions = {
@@ -15,10 +16,17 @@ class MainScreen extends React.Component {
                 <FlatList
                     data={this.props.list}
                     renderItem={({item}) =>
-                        <View style={styles.item}>
-                            <Text style={styles.title}>{item.title}</Text>
-                            <Text style={styles.description}>{item.description}</Text>
-                        </View>
+                        <Swipeable
+                            leftContent={
+                                <View style={styles.leftContent}>
+                                    <Text style={styles.leftText}>Mark as completed</Text>
+                                </View>
+                            }>
+                            <View style={styles.item}>
+                                <Text style={styles.title}>{item.title}</Text>
+                                <Text style={styles.description}>{item.description}</Text>
+                            </View>
+                        </Swipeable>
                     }
                     ItemSeparatorComponent={() =>
                         <View style={styles.separator}/>
@@ -54,6 +62,17 @@ const styles = StyleSheet.create({
     separator: {
         height: 1,
         backgroundColor: 'rgba(0, 0, 0, 0.12)',
+    },
+    leftContent: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: '#aed581',
+    },
+    leftText: {
+        alignSelf: 'flex-end',
+        margin: 16,
+        fontSize: 16,
+        color: '#fff',
     },
 });
 
