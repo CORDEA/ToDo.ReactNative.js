@@ -7,12 +7,16 @@ const InitialState = {
 };
 
 const todoReducer = (state = InitialState, action) => {
+    const {list} = state;
     switch (action.type) {
         case 'ADD_TODO':
             const {title, description} = action.payload;
-            const {list} = state;
             const item = new Item(uuid(), title, description);
             return {addTodoError: null, list: list.concat(item)};
+        case 'COMPLETE_TODO':
+            const key = action.payload;
+            list.find(item => item.key === key).completed = true;
+            return state;
         default:
             return state;
     }

@@ -3,5 +3,6 @@ export default class Item {
         this.key = key;
         this.title = title;
         this.description = description;
+        this.completed = false;
     }
 }

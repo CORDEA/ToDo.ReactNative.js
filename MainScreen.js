@@ -3,6 +3,8 @@ import React from "react";
 import {connect} from "react-redux";
 import AddFloatingActionButton from "./AddFloatingActionButton";
 import Swipeable from "react-native-swipeable";
+import {bindActionCreators} from "redux";
+import {completeTodo} from "./TodoActions";
 
 class MainScreen extends React.Component {
     static navigationOptions = {
@@ -22,6 +24,9 @@ class MainScreen extends React.Component {
                                     <Text style={styles.leftText}>Mark as completed</Text>
                                 </View>
                             }
+                            onLeftActionActivate={() => {
+                                this.props.completeTodo(item.key);
+                            }}
                             rightButtons={[
                                 <View style={styles.rightContent}>
                                     <Text style={styles.rightText}>Delete</Text>
@@ -97,4 +102,8 @@ const mapStateToProps = (state) => {
     return {list}
 };
 
-export default connect(mapStateToProps)(MainScreen);
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({completeTodo}, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

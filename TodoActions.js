@@ -4,3 +4,10 @@ export const addTodo = text => (
         payload: text,
     }
 );
+
+export const completeTodo = key => (
+    {
+        type: 'COMPLETE_TODO',
+        payload: key
+    }
+);
