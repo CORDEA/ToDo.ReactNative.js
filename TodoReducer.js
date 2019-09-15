@@ -1,7 +1,7 @@
 import {combineReducers} from "redux";
 
 const InitialState = {
-    newTodo: '',
+    addTodoError: null,
     list: [],
 };
 
@@ -10,7 +10,7 @@ const todoReducer = (state = InitialState, action) => {
         case 'ADD_TODO':
             const {list} = state;
             list.push(action.payload);
-            return {newTodo: "", list};
+            return {addTodoError: null, list};
         default:
             return state;
     }

@@ -27,7 +27,8 @@ class AddScreen extends React.Component {
                 />
                 <AddFloatingActionButton
                     onPressItem={() => {
-                        this.props.addTodo(this.state.text)
+                        this.props.addTodo(this.state.text);
+                        this.setState({text: ''})
                     }}
                 />
             </View>
@@ -43,8 +44,10 @@ const styles = StyleSheet.create({
     },
 });
 
+const mapStateToProps = (state) => ({});
+
 const mapDispatchToProps = dispatch => (
     bindActionCreators({addTodo}, dispatch)
 );
 
-export default connect(null, mapDispatchToProps)(AddScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(AddScreen);
