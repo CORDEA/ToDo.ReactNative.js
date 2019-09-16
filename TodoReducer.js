@@ -21,6 +21,8 @@ const todoReducer = (state = InitialState, action) => {
             return {...state, list: newList};
         case 'CHANGE_TODO_VISIBILITY':
             return {...state, showCompletedTodo: action.payload};
+        case 'DELETE_TODO':
+            return {...state, list: list.filter(item => item.key !== action.payload).slice()};
         default:
             return state;
     }

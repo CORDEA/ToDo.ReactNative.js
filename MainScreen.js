@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import AddFloatingActionButton from "./AddFloatingActionButton";
 import Swipeable from "react-native-swipeable";
 import {bindActionCreators} from "redux";
-import {completeTodo} from "./TodoActions";
+import {completeTodo, deleteTodo} from "./TodoActions";
 import MainMenu from "./MainMenu";
 
 class MainScreen extends React.Component {
@@ -40,9 +40,7 @@ class MainScreen extends React.Component {
                             rightButtons={[
                                 <TouchableNativeFeedback
                                     background={TouchableNativeFeedback.SelectableBackground()}
-                                    onPress={() => {
-                                        // delete
-                                    }}>
+                                    onPress={() => this.props.deleteTodo(item.key)}>
                                     <View style={styles.rightContent}>
                                         <Text style={styles.rightText}>Delete</Text>
                                     </View>
@@ -124,7 +122,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => (
-    bindActionCreators({completeTodo}, dispatch)
+    bindActionCreators({completeTodo, deleteTodo}, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
