@@ -3,6 +3,7 @@ import uuid from "uuid/v4";
 
 const InitialState = {
     addTodoError: null,
+    showCompletedTodo: true,
     list: [],
 };
 
@@ -12,12 +13,14 @@ const todoReducer = (state = InitialState, action) => {
         case 'ADD_TODO':
             const {title, description} = action.payload;
             const item = new Item(uuid(), title, description);
-            return {addTodoError: null, list: list.concat(item)};
+            return {...state, addTodoError: null, list: list.concat(item)};
         case 'CHANGE_TODO_STATE':
             const {key, completed} = action.payload;
             const newList = list.slice();
             newList.find(item => item.key === key).completed = completed;
-            return {addTodoError: null, list: newList};
+            return {...state, list: newList};
+        case 'CHANGE_TODO_VISIBILITY':
+            return {...state, showCompletedTodo: action.payload};
         default:
             return state;
     }

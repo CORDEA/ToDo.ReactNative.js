@@ -11,3 +11,10 @@ export const completeTodo = state => (
         payload: state
     }
 );
+
+export const changeTodoVisibility = state => (
+    {
+        type: 'CHANGE_TODO_VISIBILITY',
+        payload: state
+    }
+);
