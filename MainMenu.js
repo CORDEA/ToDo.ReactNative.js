@@ -1,8 +1,11 @@
 import {Image, StyleSheet, TouchableNativeFeedback, View} from "react-native";
 import React from "react";
-import Menu from "react-native-material-menu";
+import Menu, {MenuItem} from "react-native-material-menu";
+import {bindActionCreators} from "redux";
+import {changeTodoVisibility} from "./TodoActions";
+import {connect} from "react-redux";
 
-export default class MainMenu extends React.PureComponent {
+class MainMenu extends React.PureComponent {
     _menu = null;
 
     render() {
@@ -22,6 +25,10 @@ export default class MainMenu extends React.PureComponent {
                         </View>
                     </TouchableNativeFeedback>
                 }>
+                <MenuItem onPress={() => {
+                    this.props.changeTodoVisibility(!this.props.showCompletedTodo);
+                    this._menu.hide()
+                }}>Show completed todo</MenuItem>
             </Menu>
         )
     }
@@ -34,3 +41,14 @@ const styles = StyleSheet.create({
         marginEnd: 16,
     },
 });
+
+const mapStateToProps = (state) => {
+    const {todo: {showCompletedTodo}} = state;
+    return {showCompletedTodo}
+};
+
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({changeTodoVisibility}, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainMenu);

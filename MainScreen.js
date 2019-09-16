@@ -17,10 +17,14 @@ class MainScreen extends React.Component {
 
     render() {
         const {navigate} = this.props.navigation;
+        let list = this.props.list;
+        if (!this.props.showCompletedTodo) {
+            list = this.props.list.filter(item => !item.completed)
+        }
         return (
             <View style={styles.container}>
                 <FlatList
-                    data={this.props.list}
+                    data={list}
                     renderItem={({item}) =>
                         <Swipeable
                             leftContent={
@@ -109,8 +113,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-    const {todo: {list}} = state;
-    return {list}
+    const {todo: {list, showCompletedTodo}} = state;
+    return {list, showCompletedTodo}
 };
 
 const mapDispatchToProps = dispatch => (
