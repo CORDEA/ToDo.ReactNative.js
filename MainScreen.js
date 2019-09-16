@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Text, View} from "react-native";
+import {FlatList, StyleSheet, Text, TouchableNativeFeedback, View} from "react-native";
 import React from "react";
 import {connect} from "react-redux";
 import AddFloatingActionButton from "./AddFloatingActionButton";
@@ -38,9 +38,15 @@ class MainScreen extends React.Component {
                                 this.props.completeTodo({key: item.key, completed: !item.completed})
                             }
                             rightButtons={[
-                                <View style={styles.rightContent}>
-                                    <Text style={styles.rightText}>Delete</Text>
-                                </View>
+                                <TouchableNativeFeedback
+                                    background={TouchableNativeFeedback.SelectableBackground()}
+                                    onPress={() => {
+                                        // delete
+                                    }}>
+                                    <View style={styles.rightContent}>
+                                        <Text style={styles.rightText}>Delete</Text>
+                                    </View>
+                                </TouchableNativeFeedback>
                             ]}>
                             <View style={styles.item}>
                                 <Text style={styles.title}>{item.title}</Text>
