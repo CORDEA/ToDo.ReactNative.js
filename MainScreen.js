@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Text, View} from "react-native";
+import {FlatList, Image, StyleSheet, Text, TouchableNativeFeedback, View} from "react-native";
 import React from "react";
 import {connect} from "react-redux";
 import AddFloatingActionButton from "./AddFloatingActionButton";
@@ -7,8 +7,22 @@ import {bindActionCreators} from "redux";
 import {completeTodo} from "./TodoActions";
 
 class MainScreen extends React.Component {
-    static navigationOptions = {
-        title: 'ToDo',
+    static navigationOptions = () => {
+        return {
+            title: 'ToDo',
+            headerRight: (
+                <TouchableNativeFeedback
+                    background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
+                    onPress={() => {
+                    }}>
+                    <View style={styles.menu}>
+                        <Image
+                            source={require('./img/baseline_more_vert_black_24pt.png')}
+                        />
+                    </View>
+                </TouchableNativeFeedback>
+            )
+        }
     };
 
     render() {
@@ -58,6 +72,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+    },
+    menu: {
+        height: 24,
+        width: 24,
+        marginEnd: 16,
     },
     item: {
         flex: 1,
