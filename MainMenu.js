@@ -28,7 +28,10 @@ class MainMenu extends React.PureComponent {
                 <MenuItem onPress={() => {
                     this.props.changeTodoVisibility(!this.props.showCompletedTodo);
                     this._menu.hide()
-                }}>Show completed todo</MenuItem>
+                }}>{this.props.showCompletedTodo ?
+                    "Hide completed todo" :
+                    "Show completed todo"
+                }</MenuItem>
             </Menu>
         )
     }
