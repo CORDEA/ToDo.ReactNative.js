@@ -5,22 +5,26 @@ import AddFloatingActionButton from "./AddFloatingActionButton";
 import Swipeable from "react-native-swipeable";
 import {bindActionCreators} from "redux";
 import {completeTodo} from "./TodoActions";
+import Menu from "react-native-material-menu";
 
 class MainScreen extends React.Component {
     static navigationOptions = () => {
         return {
             title: 'ToDo',
             headerRight: (
-                <TouchableNativeFeedback
-                    background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-                    onPress={() => {
-                    }}>
-                    <View style={styles.menu}>
-                        <Image
-                            source={require('./img/baseline_more_vert_black_24pt.png')}
-                        />
-                    </View>
-                </TouchableNativeFeedback>
+                <Menu button={
+                    <TouchableNativeFeedback
+                        background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
+                        onPress={() => {
+                        }}>
+                        <View style={styles.menu}>
+                            <Image
+                                source={require('./img/baseline_more_vert_black_24pt.png')}
+                            />
+                        </View>
+                    </TouchableNativeFeedback>
+                }>
+                </Menu>
             )
         }
     };
