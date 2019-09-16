@@ -26,9 +26,9 @@ class MainScreen extends React.Component {
                                         <Text style={styles.leftText}>Mark as completed</Text>}
                                 </View>
                             }
-                            onLeftActionActivate={() => {
-                                this.props.completeTodo(item.key);
-                            }}
+                            onLeftActionActivate={() =>
+                                this.props.completeTodo({key: item.key, completed: !item.completed})
+                            }
                             rightButtons={[
                                 <View style={styles.rightContent}>
                                     <Text style={styles.rightText}>Delete</Text>

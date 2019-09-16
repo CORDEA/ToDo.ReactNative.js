@@ -5,9 +5,9 @@ export const addTodo = text => (
     }
 );
 
-export const completeTodo = key => (
+export const completeTodo = state => (
     {
-        type: 'COMPLETE_TODO',
-        payload: key
+        type: 'CHANGE_TODO_STATE',
+        payload: state
     }
 );

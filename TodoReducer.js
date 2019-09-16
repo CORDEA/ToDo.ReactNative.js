@@ -13,10 +13,11 @@ const todoReducer = (state = InitialState, action) => {
             const {title, description} = action.payload;
             const item = new Item(uuid(), title, description);
             return {addTodoError: null, list: list.concat(item)};
-        case 'COMPLETE_TODO':
-            const key = action.payload;
-            list.find(item => item.key === key).completed = true;
-            return state;
+        case 'CHANGE_TODO_STATE':
+            const {key, completed} = action.payload;
+            const newList = list.slice();
+            newList.find(item => item.key === key).completed = completed;
+            return {addTodoError: null, list: newList};
         default:
             return state;
     }
