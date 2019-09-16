@@ -16,6 +16,7 @@ class AddScreen extends React.Component {
     }
 
     render() {
+        const {goBack} = this.props.navigation;
         return (
             <View style={styles.container}>
                 <TextInput
@@ -39,6 +40,7 @@ class AddScreen extends React.Component {
                     onPressItem={() => {
                         this.props.addTodo(this.state);
                         this.setState({title: '', description: ''})
+                        goBack();
                     }}
                 />
             </View>
