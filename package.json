@@ -12,17 +12,17 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
-    "react-native-floating-action": "^1.19.1",
+    "react-native-floating-action": "^1.21.0",
     "react-native-gesture-handler": "~1.10.2",
-    "react-native-material-menu": "^1.0.0",
+    "react-native-material-menu": "^1.2.0",
     "react-native-swipeable": "^0.6.0",
     "react-native-web": "~0.13.12",
-    "react-navigation": "^4.0.4",
-    "react-navigation-stack": "^1.7.3",
-    "react-redux": "^7.1.1",
-    "redux": "^4.0.4",
+    "react-navigation": "^4.4.4",
+    "react-navigation-stack": "^2.10.4",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0",
     "redux-persist": "^6.0.0",
-    "uuid": "^3.3.3"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "babel-preset-expo": "8.3.0"

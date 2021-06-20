@@ -1,5 +1,5 @@
 import Item from "./Item";
-import uuid from "uuid/v4";
+import { v4 as uuidv4 } from "uuid";
 
 const InitialState = {
     addTodoError: null,
@@ -12,7 +12,7 @@ const todoReducer = (state = InitialState, action) => {
     switch (action.type) {
         case 'ADD_TODO':
             const {title, description} = action.payload;
-            const item = new Item(uuid(), title, description);
+            const item = new Item(uuidv4(), title, description);
             return {...state, addTodoError: null, list: list.concat(item)};
         case 'CHANGE_TODO_STATE':
             const {key, completed} = action.payload;
